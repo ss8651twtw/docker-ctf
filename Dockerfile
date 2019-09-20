@@ -24,12 +24,13 @@ RUN apt-get -qq update && \
     gcc-multilib \
     locales \
     ruby \
+    ruby-dev \
     python \
-    python-pip \
+    python-pip
 
 # python package
-RUN pip install pwntools \
-    pip install git+https://github.com/ReFirmLabs/binwalk.git \
+RUN pip install pwntools && \
+    pip install git+https://github.com/ReFirmLabs/binwalk.git
 
 # peda and Pwngdb
 RUN git clone https://github.com/longld/peda.git && \
@@ -37,5 +38,5 @@ RUN git clone https://github.com/longld/peda.git && \
     cp Pwngdb/.gdbinit .
 
 # toolkit
-RUN gem install one_gadget \
+RUN gem install one_gadget && \
     gem install seccomp-tools
